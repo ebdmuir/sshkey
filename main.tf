@@ -8,7 +8,7 @@ resource "aws_key_pair" "generated_key" {
     tls_private_key.tls_key
   ]
 
-  key_name   = "${var.brand_id}-${var.keyfile}"
+  key_name   = var.name
   public_key = tls_private_key.tls_key.public_key_openssh
 }
 
@@ -19,5 +19,5 @@ resource "local_file" "key_file" {
   ]
 
   sensitive_content = tls_private_key.tls_key.private_key_pem
-  filename = "${var.brand_id}-${var.keyfile}"
+  filename = "${var.name}.pem"
 }

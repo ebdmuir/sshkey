@@ -21,3 +21,13 @@ resource "local_file" "key_file" {
   sensitive_content = tls_private_key.tls_key.private_key_pem
   filename = "${var.name}.pem"
 }
+
+resource "local_file" "pub_file" {
+  count = var.save ? 1 : 0
+  depends_on = [
+    tls_private_key.tls_key
+  ]
+
+  content = tls_private_key.tls_key.public_key_openssh
+  filename = "${var.name}.pub"
+}

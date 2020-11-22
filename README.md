@@ -4,11 +4,11 @@ Sometimes you just need a new ssh key to authenticate with your servers, add thi
 
 ```
 module "sshkey" {
-	source  = "app.terraform.io/ebdm/sshkey/aws"
-	version = "0.1.0"
-	
-	name = "myapp"
-	save = true ? false // Should it be saved to disk?
+  source  = "https://github.com/ebdmuir/terraform-aws-sshkey.git"
+  version = "0.1.0"
+
+  name = "myapp"
+  save = true ? false // Should it be saved to disk?
 },
 ```
 
